@@ -1,0 +1,136 @@
+/* Absent Brethren: a quiet, choir-book look.
+   Parchment and black ink, with rubrics (headings, dates, initials) in red. */
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap");
+
+:root {
+  --parchment: #f6efe0;
+  --page: #fbf7ee;
+  --ink: #2a2420;
+  --ink-soft: #5e544a;
+  --rubric: #9b2a1f;
+  --rule: #d9cdb6;
+  --gold: #a07a2c;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --parchment: #1b1814;
+    --page: #23201b;
+    --ink: #ece3d2;
+    --ink-soft: #b5a993;
+    --rubric: #e0796a;
+    --rule: #3d362d;
+    --gold: #d2a95a;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--parchment);
+  color: var(--ink);
+  font: 400 1.18rem/1.65 "EB Garamond", Garamond, "Times New Roman", serif;
+}
+a { color: var(--rubric); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--rubric); outline-offset: 3px; border-radius: 2px; }
+
+.wrap { max-width: 44rem; margin: 0 auto; padding: 0 20px; }
+
+/* Masthead */
+.mast { text-align: center; padding: 44px 0 20px; }
+.mast .cross { color: var(--rubric); font-size: 1.6rem; line-height: 1; display: block; margin-bottom: 10px; }
+.mast .name {
+  display: inline-block;
+  font-size: clamp(2rem, 7vw, 3rem);
+  font-weight: 500;
+  font-variant: small-caps;
+  letter-spacing: .08em;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.1;
+}
+.mast .name::first-letter { color: var(--rubric); }
+.mast .motto { margin: 8px 0 0; font-style: italic; color: var(--ink-soft); font-size: 1.05rem; }
+.mast nav { margin-top: 18px; display: flex; justify-content: center; gap: 26px; font-variant: small-caps; letter-spacing: .1em; font-size: 1.05rem; }
+.mast nav a { color: var(--ink); text-decoration: none; padding: 6px 2px; border-bottom: 1px solid transparent; }
+.mast nav a:hover, .mast nav a[aria-current] { color: var(--rubric); border-bottom-color: var(--rubric); }
+
+/* An ornamental rule: a line with a small red cross in the middle */
+.orn { display: flex; align-items: center; gap: 14px; color: var(--rubric); margin: 22px auto; }
+.orn::before, .orn::after { content: ""; flex: 1; border-top: 1px solid var(--rule); }
+
+/* The page of text */
+.leaf {
+  background: var(--page);
+  border: 1px solid var(--rule);
+  box-shadow: 0 1px 0 var(--rule), 0 10px 30px -18px rgba(60, 40, 10, .35);
+  padding: clamp(24px, 6vw, 48px);
+  margin-bottom: 36px;
+}
+.label {
+  font-variant: small-caps;
+  letter-spacing: .14em;
+  color: var(--rubric);
+  font-size: 1rem;
+  margin: 0 0 6px;
+}
+h1, h2, h3 { font-weight: 500; line-height: 1.2; color: var(--ink); }
+.leaf h1, .leaf h2.title { font-size: clamp(1.6rem, 5vw, 2.15rem); margin: 0 0 6px; }
+.leaf h2.title a { color: inherit; text-decoration: none; }
+.leaf h2.title a:hover { color: var(--rubric); }
+.date { font-style: italic; color: var(--ink-soft); margin: 0 0 22px; }
+
+/* Post text */
+.body h3 { font-size: 1.25rem; font-variant: small-caps; letter-spacing: .05em; color: var(--rubric); margin: 1.6em 0 .4em; }
+.body p { margin: 0 0 1em; }
+.body ul, .body ol { padding-left: 1.4em; margin: 0 0 1.1em; }
+.body li { margin: .25em 0; }
+.body ul li::marker { color: var(--rubric); content: "✠  "; font-size: .8em; }
+.body ol li::marker { color: var(--rubric); }
+.body strong { font-weight: 600; }
+.body hr { border: 0; text-align: center; margin: 1.6em 0; }
+.body hr::after { content: "❧"; color: var(--rubric); font-size: 1.3rem; }
+.body.initial > p:first-child::first-letter {
+  float: left;
+  font-size: 3.6em;
+  line-height: .82;
+  padding: .06em .1em 0 0;
+  color: var(--rubric);
+  font-weight: 500;
+}
+
+.more { margin: 26px 0 0; font-variant: small-caps; letter-spacing: .1em; }
+
+/* List of earlier updates, by month */
+.month { font-variant: small-caps; letter-spacing: .14em; color: var(--rubric); font-size: 1.05rem; margin: 30px 0 4px; border-bottom: 1px solid var(--rule); padding-bottom: 4px; }
+.month:first-child { margin-top: 0; }
+.list { list-style: none; padding: 0; margin: 0; }
+.list li { padding: 12px 0; border-bottom: 1px dotted var(--rule); }
+.list li:last-child { border-bottom: 0; }
+.list a { color: var(--ink); text-decoration: none; font-size: 1.15rem; font-weight: 500; }
+.list a:hover { color: var(--rubric); text-decoration: underline; }
+.list .when { display: block; font-style: italic; color: var(--ink-soft); font-size: .98rem; }
+.list .gist { display: block; color: var(--ink-soft); font-size: 1rem; margin-top: 2px; }
+
+/* Month jump links */
+.months { display: flex; flex-wrap: wrap; gap: 6px 18px; justify-content: center; font-variant: small-caps; letter-spacing: .08em; margin: 0 0 18px; }
+
+/* Previous / next */
+.pager { display: flex; justify-content: space-between; gap: 16px; margin: 30px 0 0; padding-top: 18px; border-top: 1px solid var(--rule); }
+.pager a { text-decoration: none; max-width: 48%; }
+.pager .dir { display: block; font-variant: small-caps; letter-spacing: .1em; font-size: .95rem; color: var(--ink-soft); }
+.pager .next { text-align: right; margin-left: auto; }
+
+footer { text-align: center; color: var(--ink-soft); font-style: italic; padding: 10px 0 48px; font-size: 1rem; }
+footer .cross { color: var(--rubric); font-style: normal; }
+
+@media (max-width: 560px) {
+  body { font-size: 1.1rem; }
+  .mast { padding-top: 30px; }
+  .pager { flex-direction: column; }
+  .pager a { max-width: none; }
+  .pager .next { text-align: left; margin-left: 0; }
+}
